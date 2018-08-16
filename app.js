@@ -12,18 +12,18 @@ $(document).ready(function () {
     ];
 
     for (var i = 1; i <= 100; i++) {
-        var accusation = ('<h3 id=\'' + i + '\'>Accusation ' + i + '</h3>');
-        $('body').append(accusation);
-        $('#' + i).click(displayAccusation(i));
-        (i % 2 == 0) ? $('#' + i).addClass('alert alert-primary') : $('#' + i).addClass('alert alert-info');
+        var $accusation = $('<h3 id=\'' + i + '\'>Accusation ' + i + '</h3>');
+        $('body').append($accusation);
+        $accusation.click(displayAccusation(i));
+        (i % 2 == 0) ? $accusation.addClass('alert alert-primary') : $accusation.addClass('alert alert-info');
 
     }
 
     function displayAccusation(i) {
         return function () {
-            alert('I accuse ' + friends[(friends.length > i ? i : i % friends.length)]
-                + ', with ' + weapons[(weapons.length > i ? i : i % weapons.length)]
-                + ' in the ' + locations[(locations.length > i ? i : i % locations.length)]);
+            alert('I accuse ' + friends[i % friends.length]
+                + ', with ' + weapons[i % weapons.length]
+                + ' in the ' + locations[i % locations.length]);
         }
     };
 });
